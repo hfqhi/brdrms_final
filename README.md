@@ -1,9 +1,9 @@
 # 🏛️ BRDRMS — Barangay Residency and Document Request Management System
 
-A desktop-based **Barangay Residency and Document Request Management System** developed in **Java** as a final System Development activity for **NC-3 (Java Programming)**.
+A console-based **Barangay Residency and Document Request Management System** developed in **Java** as a final System Development activity for **NC-3 (Java Programming)**.
 
 ![Language](https://img.shields.io/badge/language-Java-orange?logo=java)
-![IDE](https://img.shields.io/badge/IDE-NetBeans-1B6AC6?logo=apache-netbeans-ide)
+![IDE](https://img.shields.io/badge/IDE-NetBeans%208-1B6AC6?logo=apache-netbeans-ide)
 ![Build](https://img.shields.io/badge/build-Apache%20Ant-A81C7D)
 ![Database](https://img.shields.io/badge/database-MySQL-4479A1?logo=mysql)
 ![License](https://img.shields.io/badge/license-unlicensed-red)
@@ -15,6 +15,7 @@ A desktop-based **Barangay Residency and Document Request Management System** de
 - [Overview](#overview)
 - [Features](#features)
 - [Tech Stack](#tech-stack)
+- [Dependencies](#dependencies)
 - [Project Structure](#project-structure)
 - [Prerequisites](#prerequisites)
 - [Setup & Installation](#setup--installation)
@@ -28,9 +29,9 @@ A desktop-based **Barangay Residency and Document Request Management System** de
 
 ## Overview
 
-**BRDRMS** (Barangay Residency and Document Request Management System) is a Java-based desktop application built as the final output for a System Development course under the **NC-3 Java track**. The system is designed to digitize and streamline barangay-level operations — managing resident records, processing document requests, and generating reports through a graphical user interface built with Java Swing.
+**BRDRMS** (Barangay Residency and Document Request Management System) is a console-based Java application built as the final output for a System Development course under the **NC-3 Java track**. The system is designed to digitize and streamline barangay-level operations — managing resident records, processing document requests, and generating reports — all through a terminal/console interface.
 
-The project was developed using **NetBeans IDE** with **Apache Ant** as its build system, and uses **MySQL** as its database backend.
+The project was developed using **NetBeans IDE 8** with **Apache Ant** as its build system, **MySQL** as its database backend, **MySQL JDBC Driver** for database connectivity, and **jBCrypt 0.8** for password hashing.
 
 ---
 
@@ -47,10 +48,24 @@ The project was developed using **NetBeans IDE** with **Apache Ant** as its buil
 | Technology | Role |
 |---|---|
 | Java | Core programming language |
-| Java Swing | Graphical User Interface (GUI) |
 | MySQL | Database backend |
+| MySQL JDBC Driver | Java-to-MySQL database connectivity |
+| jBCrypt 0.8 | Password hashing and security |
 | Apache Ant | Build automation (`build.xml`) |
-| NetBeans IDE | Development environment |
+| NetBeans IDE 8 | Development environment |
+
+---
+
+## Dependencies
+
+The project requires the following external `.jar` libraries to be added to the NetBeans project classpath:
+
+| Library | Version | Purpose |
+|---|---|---|
+| MySQL Connector/J | Latest | JDBC driver for MySQL connectivity |
+| jBCrypt | 0.8 | BCrypt password hashing |
+
+> Make sure these `.jar` files are included under **Project Properties → Libraries** in NetBeans before building.
 
 ---
 
@@ -81,9 +96,11 @@ brdrms_final/
 Make sure the following are installed before running the project:
 
 - **[Java JDK](https://www.oracle.com/java/technologies/downloads/)** (JDK 8 or higher recommended)
-- **[NetBeans IDE](https://netbeans.apache.org/)** (recommended for opening the project directly)
+- **[NetBeans IDE 8](https://netbeans.apache.org/front/main/download/nb8/)** (recommended for opening the project directly)
 - **[Apache Ant](https://ant.apache.org/)** (if building from the command line)
 - **[MySQL Server](https://dev.mysql.com/downloads/mysql/)** — required for the database
+- **MySQL Connector/J** `.jar` — JDBC driver for MySQL
+- **jBCrypt 0.8** `.jar` — password hashing library
 
 ---
 
@@ -95,13 +112,17 @@ Make sure the following are installed before running the project:
 git clone https://github.com/hfqhi/brdrms_final.git
 ```
 
-2. **Open in NetBeans:**
-   - Launch NetBeans IDE
+2. **Open in NetBeans 8:**
+   - Launch NetBeans IDE 8
    - Go to **File → Open Project**
    - Navigate to the cloned `brdrms_final/` folder and open it
    - NetBeans will automatically recognize it as an Ant-based Java project
 
-3. **Or build via command line (Apache Ant):**
+3. **Add required libraries:**
+   - Right-click the project → **Properties → Libraries → Add JAR/Folder**
+   - Add the `mysql-connector-j-*.jar` and `jbcrypt-0.8.jar` files
+
+4. **Or build via command line (Apache Ant):**
 
 ```bash
 cd brdrms_final
@@ -132,8 +153,9 @@ mysql -u root -p brdrms_db < db/<script_name>.sql
 
 ## Running the App
 
-**From NetBeans:**
+**From NetBeans 8:**
 - Press **F6** or click **Run → Run Project**
+- Output will appear in the NetBeans console window
 
 **From the command line (Apache Ant):**
 
